@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:camera="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui.Camera"
+             x:Class="MauiCameraViewIssue.MainPage"
+             Title="CameraView ZoomFactor Repro">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+            <Label Text="CommunityToolkit CameraView ZoomFactor Repro"
+                   FontAttributes="Bold"
+                   FontSize="18" />
+
+            <Label Text="Using Xamarin.AndroidX.Camera 1.6.1 - inspect values below after preview starts."
+                   FontSize="12" />
+
+            <camera:CameraView x:Name="CameraPreview"
+                               HeightRequest="320"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Start" />
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                <Button Grid.Column="0"
+                        Text="Refresh Zoom Diagnostics"
+                        Clicked="OnRefreshClicked" />
+                <Button Grid.Column="1"
+                        Text="Switch Camera"
+                        Clicked="OnSwitchCameraClicked" />
+            </Grid>
+
+            <Label x:Name="StatusLabel" Text="Status: Initializing..." />
+            <Label x:Name="SelectedCameraLabel" Text="Selected Camera: (none)" />
+            <Label x:Name="MinZoomLabel" Text="MinimumZoomFactor: -" />
+            <Label x:Name="MaxZoomLabel" Text="MaximumZoomFactor: -" />
+            <Label x:Name="ZoomStateLabel" Text="ZoomFactor: -" />
+            <Label x:Name="ReproResultLabel"
+                   Text="Repro Result: pending"
+                   FontAttributes="Bold" />
+
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                <Label Text="Set ZoomFactor" VerticalOptions="Center" />
+                <Slider Grid.Column="1"
+                        x:Name="ZoomSlider"
+                        Minimum="1"
+                        Maximum="10"
+                        Value="1"
+                        ValueChanged="OnZoomSliderChanged" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

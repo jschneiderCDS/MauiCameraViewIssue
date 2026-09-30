@@ -119,7 +119,7 @@ namespace MauiCameraViewIssue
             MaxZoomLabel.Text = $"MaximumZoomFactor: {maxZoom:F4}";
             ZoomStateLabel.Text = $"ZoomFactor: {CameraPreview.ZoomFactor:F4} (slider {ZoomSlider.Value:F4})";
 
-            var minMaxMissing = minZoom <= 0 || maxZoom <= 0 || maxZoom <= minZoom;
+            var minMaxMissing = minZoom == maxZoom;
             if (minMaxMissing)
             {
                 ReproResultLabel.Text = "Repro Result: Min/Max ZoomFactor not detected (invalid/default values).";
